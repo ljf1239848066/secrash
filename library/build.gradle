@@ -1,0 +1,75 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+
+ext {
+    ARTIFACT_ID = 'secrash'
+    VERSION_NAME = '1.0.0'
+    VERSION_CODE = 1
+
+    DESCRIPTION = 'security crash handler'
+
+    SITE_URL = 'https://github.com/ljf1239848066/secrash'
+    GIT_URL = 'https://github.com/ljf1239848066/secrash.git'
+    GROUP_NAME = 'lxzh'
+    GROUP_ID = 'com.lxzh123'
+    COMPILE_SDK = 29
+    BUILD_TOOLS = '29.0.2'
+
+    MODULE_NAME = 'secrash'
+    MODULE_TYPE = 'aar'
+
+    LICENSE = ['Apache-2.0']
+
+    DEVELOPER_ID = 'lxzh'
+    DEVELOPER_NAME = 'lxzh'
+    DEVELOPER_EMAIL = 'leijf1239848066@gmail.com'
+
+    MAVEN_TYPE_SNAPSHOT = false
+
+    IS_UPLOADING = project.getGradle().startParameter.taskNames.any{it.contains('bintrayUpload')}
+}
+
+publish {
+    artifactId = ARTIFACT_ID
+    userOrg = GROUP_NAME
+    groupId = GROUP_ID
+    uploadName = ARTIFACT_ID
+    publishVersion = VERSION_NAME
+    desc = DESCRIPTION
+    website = SITE_URL
+    licences = LICENSE
+}

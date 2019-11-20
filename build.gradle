@@ -18,7 +18,10 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        mavenLocal()
+    }
+    tasks.withType(Javadoc) {
+        enabled = false
     }
 }
 

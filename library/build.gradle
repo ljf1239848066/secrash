@@ -34,42 +34,18 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-
-ext {
-    ARTIFACT_ID = 'secrash'
-    VERSION_NAME = '1.0.0'
-    VERSION_CODE = 1
-
-    DESCRIPTION = 'security crash handler'
-
-    SITE_URL = 'https://github.com/ljf1239848066/secrash'
-    GIT_URL = 'https://github.com/ljf1239848066/secrash.git'
-    GROUP_NAME = 'lxzh'
-    GROUP_ID = 'com.lxzh123'
-    COMPILE_SDK = 29
-    BUILD_TOOLS = '29.0.2'
-
-    MODULE_NAME = 'secrash'
-    MODULE_TYPE = 'aar'
-
-    LICENSE = ['Apache-2.0']
-
-    DEVELOPER_ID = 'lxzh'
-    DEVELOPER_NAME = 'lxzh'
-    DEVELOPER_EMAIL = 'leijf1239848066@gmail.com'
-
-    MAVEN_TYPE_SNAPSHOT = false
-
-    IS_UPLOADING = project.getGradle().startParameter.taskNames.any{it.contains('bintrayUpload')}
+task sourcesJar(type: Jar) {
+    from project.file('src/main/java/com/lxzh123/secrash/SeCrash.java')
+    classifier = 'sources'
 }
 
 publish {
-    artifactId = ARTIFACT_ID
-    userOrg = GROUP_NAME
-    groupId = GROUP_ID
-    uploadName = ARTIFACT_ID
-    publishVersion = VERSION_NAME
-    desc = DESCRIPTION
-    website = SITE_URL
-    licences = LICENSE
+    artifactId = 'secrash'
+    userOrg = 'lxzh'
+    groupId = 'com.lxzh123'
+    uploadName = 'secrash'
+    publishVersion = '1.0.0'
+    desc = 'security crash handler'
+    website = 'https://github.com/ljf1239848066/secrash'
+    licences = ['Apache-2.0']
 }

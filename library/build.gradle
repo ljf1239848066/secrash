@@ -34,9 +34,14 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-task sourcesJar(type: Jar) {
-    from project.file('src/main/java/com/lxzh123/secrash/SeCrash.java')
+task androidSourcesJar(type: Jar) {
     classifier = 'sources'
+    from project.file('src/main/java/com/lxzh123/secrash/SeCrash.java')
+}
+
+artifacts {
+    archives androidSourcesJar
+//    archives androidJavadocsJar
 }
 
 publish {

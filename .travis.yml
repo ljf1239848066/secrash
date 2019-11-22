@@ -1,0 +1,16 @@
+{
+  "script": [
+    "./gradlew assembleRelease"
+  ],
+  "android": {
+    "components": [
+      "tools",
+      "build-tools-29.0.2",
+      "android-29"
+    ]
+  },
+  "language": "android",
+  "before_install": [
+    "chmod +x ./gradlew"
+  ]
+}

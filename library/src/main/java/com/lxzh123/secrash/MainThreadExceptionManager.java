@@ -6,11 +6,11 @@ import com.lxzh123.secrash.handler.KillAppHandler;
 
 class MainThreadExceptionManager {
     IExceptionHandler get(Throwable e) {
-        if(e instanceof IllegalStateException){
+        if (e instanceof IllegalStateException) {
             return new EndCurrentHandler();
         }
 
-        if(e instanceof SecurityException){
+        if (e instanceof SecurityException) {
             return new KillAppHandler();
         }
 
